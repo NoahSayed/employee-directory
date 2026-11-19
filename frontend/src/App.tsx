@@ -11,6 +11,7 @@ export default function App() {
   const [employees, setEmployees] = useState<Employee[]>([])
   const [form, setForm] = useState(empty)
   const [editId, setEditId] = useState<number | null>(null)
+  const [query, setQuery] = useState("")
   const [search, setSearch] = useState("")
   const [page, setPage] = useState(1)
   const [error, setError] = useState("")
@@ -71,7 +72,10 @@ export default function App() {
 
       {error && <p className="error">{error}</p>}
 
-      <input placeholder="Search by name or role" value={search} onChange={e => { setSearch(e.target.value); setPage(1) }} />
+      <form onSubmit={e => { e.preventDefault(); setSearch(query); setPage(1) }}>
+        <input placeholder="Search by name or role" value={query} onChange={e => setQuery(e.target.value)} />
+        <button>Search</button>
+      </form>
 
       <table>
         <thead>
