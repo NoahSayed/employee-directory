@@ -4,7 +4,7 @@ const mysql = require("mysql2/promise")
 
 const app = express()
 const db = mysql.createPool({ host: "localhost", user: "root", password: process.env.DB_PASSWORD, database: "employees" })
-do
+
 app.use(cors())
 app.use(express.json())
 
